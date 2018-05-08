@@ -217,7 +217,7 @@ def get_data_layer(roidb, num_classes):
 def train_net(network, imdb, roidb, output_dir, log_dir, pretrained_model=None, max_iters=40000, restore=False):
     """Train a Fast R-CNN network."""
 
-    config = tf.ConfigProto(allow_soft_placement=True)
+    config = tf.ConfigProto(allow_soft_placement=True, log_device_placement=True)
     config.gpu_options.allocator_type = 'BFC'
     config.gpu_options.per_process_gpu_memory_fraction = 0.75
     with tf.Session(config=config) as sess:
